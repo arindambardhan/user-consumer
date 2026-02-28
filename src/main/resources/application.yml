@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  threads:
+    virtual:
+      enabled: true   # enables virtual threads for all Tomcat request handlers (Java 21+)
+
+users:
+  api:
+    base-url: http://localhost:8080
