@@ -1,10 +1,8 @@
 server:
   port: 8081
-
-spring:
-  threads:
-    virtual:
-      enabled: true   # enables virtual threads for all Tomcat request handlers (Java 21+)
+  tomcat:
+    threads:
+      max: 500
 
 users:
   api:
