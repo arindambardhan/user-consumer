@@ -19,16 +19,20 @@ public class UserClientService {
     private final RestClient restClient;
 
     public CompletableFuture<List<UserDTO>> fetchUsers() {
+        ExecutorService executor = Executors.newFixedThreadPool(2000);
         try {
-            ExecutorService executor = Executors.newFixedThreadPool(200);
-            return CompletableFuture.supplyAsync(() -> restClient.get()
-                    .uri("/api/users")
-                    .retrieve()
-                    .body(new ParameterizedTypeReference<>() {
-                    }), executor);
+            return CompletableFuture.supplyAsync(this::getUserDTOS, executor);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
         return null;
+    }
+
+    private List<UserDTO> getUserDTOS() {
+        return restClient.get()
+                .uri("/api/users")
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {
+                });
     }
 }

@@ -24,8 +24,8 @@ public class RestClientConfig {
                 .setDefaultConnectionConfig(ConnectionConfig.custom()
                         .setSocketTimeout(Timeout.ofSeconds(10))
                         .build())
-                .setMaxConnPerRoute(500)
-                .setMaxConnTotal(500)
+                .setMaxConnPerRoute(2000)
+                .setMaxConnTotal(2000)
                 .build();
 
         RequestConfig requestConfig = RequestConfig.custom()
