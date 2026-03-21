@@ -1,8 +1,10 @@
 server:
   port: 8081
-  tomcat:
-    threads:
-      max: 2000
+
+spring:
+  threads:
+    virtual:
+      enabled: true
 
 users:
   api:

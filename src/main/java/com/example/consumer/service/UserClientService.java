@@ -18,17 +18,8 @@ import java.util.concurrent.Executors;
 public class UserClientService {
     private final RestClient restClient;
 
-    public CompletableFuture<List<UserDTO>> fetchUsers() {
-        ExecutorService executor = Executors.newFixedThreadPool(2000);
-        try {
-            return CompletableFuture.supplyAsync(this::getUserDTOS, executor);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-        }
-        return null;
-    }
-
-    private List<UserDTO> getUserDTOS() {
+    public List<UserDTO> fetchUsers() {
+        log.info("Current thread: {}", Thread.currentThread().getName());
         return restClient.get()
                 .uri("/api/users")
                 .retrieve()
