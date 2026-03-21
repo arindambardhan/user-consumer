@@ -7,8 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
 
 @Slf4j
 @RestController
@@ -18,7 +17,7 @@ public class UserController {
     private final UserClientService userClientService;
 
     @GetMapping
-    public List<UserDTO> getUsers() {
+    public Flux<UserDTO> getUsers() {
         return userClientService.fetchUsers();
     }
 }

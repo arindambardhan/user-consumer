@@ -1,10 +1,6 @@
 server:
   port: 8081
 
-spring:
-  threads:
-    virtual:
-      enabled: true
 
 users:
   api:
